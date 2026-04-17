@@ -1,0 +1,26 @@
+1)
+Difference between List and Dictionary of Pyhton are given below:
+
+1. A list is an ordered collection of items that are used to store multiple items in a single variable . A Dictionary is a collection which is ordered ,stores data in key-value pairs 
+2. List access by index . Dictionary access by key
+3. Duplicates are allowed . Duplicates are not allowed keys unique
+4. List = [1,2,3,4,4,5] . Dictionary ={"Name": "Abrar", "Proffession" :"Studnet"}
+
+
+2)
+*arg is a non keyword arguments, used to pass multiple positional arguments that becomes a tuple inside the fuction
+
+example:
+
+def add(*arg):
+    print(sum(args))
+
+add(2,4)
+add(2,3,4,5)
+
+*kwargs is a keyword arguments used to pass multiple named arguments inside fuction it becomes a Dictionary
+
+example 
+def Student(**kwargs):
+    print(kwargs)
+Student(name="abrar" , age="23", city="ctg")
