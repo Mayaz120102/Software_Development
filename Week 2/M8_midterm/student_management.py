@@ -8,7 +8,7 @@ class StudentDatabase:
     def view_all_students(self):
         for student in self.student_list:
             print(
-                f"ID:{student.id}, Name:{student.name}, Department:{student.department}, Enrolled:{student.status}"
+                f"ID: {student.student_id}, Name: {student.name}, Department: {student.department}, Enrolled: {student.status}"
             )
         # print("\n")
 
@@ -25,7 +25,7 @@ class StudentDatabase:
 
 class Student:
     def __init__(self, student_id, name, department, is_enrolled):
-        self.__id = student_id
+        self.__student_id = student_id
         self.__name = name
         self.__department = department
         self.__is_enrolled = is_enrolled
@@ -33,38 +33,43 @@ class Student:
         StudentDatabase.add_student(self)
 
     @property
-    def id(self):
-        return self.__id
+    def student_id(self):
+        return self.__student_id
+
     @property
     def name(self):
         return self.__name
+
     @property
     def department(self):
         return self.__department
+
     @property
     def status(self):
         return self.__is_enrolled
 
-
-
     def view_student_info(self):
-        print(self.__name, self.__id, self.__department, self.__is_enrolled)
+        print(self.__student_id, self.__name, self.__department, self.__is_enrolled)
 
     def enroll_student(self):
         if self.__is_enrolled == False:
             self.__is_enrolled = True
-            print(f"\nThis ID:{self.__id},Name:{self.__name} is enrolled successfully")
+            print(
+                f"\nThis ID:{self.__student_id},Name:{self.__name} is enrolled successfully"
+            )
             print("\n")
         else:
-            print(f"\nId:{self.__id} Already enrolled")
+            print(f"\nId:{self.__student_id} Already enrolled")
 
     def drop_student(self):
         if self.__is_enrolled == True:
             self.__is_enrolled = False
 
-            print(f"\nStudent ID:{self.__id} Name:{self.__name} has been dropped\n")
+            print(
+                f"\nStudent ID:{self.__student_id} Name:{self.__name} has been dropped\n"
+            )
         else:
-            print(f"\nID:{self.__id} is already Dropped\n")
+            print(f"\nID:{self.__student_id} is already Dropped\n")
 
 
 s1 = Student(101, "Abrar Mayaz", "CSE", True)
@@ -76,7 +81,9 @@ sdb = StudentDatabase()
 
 
 while True:
-    print("\n\n\t-----------------------Student Management System-----------------------\t\n")
+    print(
+        "\n\n\t-----------------------Student Management System-----------------------\t\n"
+    )
     print("1. View All Student: ")
     print("2. Enroll Student: ")
     print("3. Drop Student: ")
@@ -91,7 +98,7 @@ while True:
         student_id = int(input("Enter the id: "))
         found = False
         for student in StudentDatabase.student_list:
-            if student.id == student_id:
+            if student.student_id == student_id:
                 student.enroll_student()
                 found = True
                 break
@@ -101,7 +108,7 @@ while True:
         student_id = int(input("Enter the Student id: "))
         found = False
         for student in StudentDatabase.student_list:
-            if student.id == student_id:
+            if student.student_id == student_id:
                 student.drop_student()
                 found = True
                 break
